@@ -28,7 +28,7 @@ function App() {
         {item.label}
       </Todo>
     )
-  })
+  })                           
 
   const onClickFn = () => {
     console.log(newitem)
@@ -39,15 +39,18 @@ function App() {
   }
   return (
     <div className="app">
+     
       <h1>mi lista por cosas que hacer</h1>
-      <span> cantidad de items:{items.length}</span>
+      <p>cantidad de items:{items.length}</p>
+
+      
 
       <input
         type="text"
         value={newitem}
         onChange={onChangerfn}
       />
-      <button onClick={onClickFn}>agregar</button>
+     <button onClick={onClickFn}>agregar</button>
       <button onClick={deleteAll}> eliminar </button>
       {list}
 
@@ -58,4 +61,4 @@ function App() {
 }
 
 
-export default App;
+export default App; 
