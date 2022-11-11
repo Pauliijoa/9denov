@@ -9,17 +9,50 @@ function App() {
     { label: "comprar pan" },
     { label: "pagar la luz" }
   ]
-  const [items, serItems] = useState(defaultState)
+  const [items, setItems] = useState(defaultState)
+  const [newitem, setNewItem] = useState('')
+
+  const deleteFn = (label) => {
+    setItems(items.filter(item => item.label !== label))
+  }
+  const deleteAll = () => {
+    setItems([])
+
+  }
+
+
   const list = items.map(item => {
-    return <Todo>{item.label}</Todo>
+    return (
+      <Todo
+        onClickFn={() => deleteFn(item.label)}>
+        {item.label}
+      </Todo>
+    )
   })
+
+  const onClickFn = () => {
+    console.log(newitem)
+    setItems([...items, { label: newitem }])
+  }
+  const onChangerfn = (event) => {
+    setNewItem(event.target.value)
+  }
   return (
     <div className="app">
       <h1>mi lista por cosas que hacer</h1>
-      <input type="text" />
-      <button> agregar</button>
+      <span> cantidad de items:{items.length}</span>
+
+      <input
+        type="text"
+        value={newitem}
+        onChange={onChangerfn}
+      />
+      <button onClick={onClickFn}>agregar</button>
+      <button onClick={deleteAll}> eliminar </button>
       {list}
+
     </div>
+
 
   )
 }

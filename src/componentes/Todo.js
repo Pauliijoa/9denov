@@ -3,6 +3,12 @@ const Todo = (props) => {
         <div>
             <input type="checkbox"></input>
             <label>{props.children}</label>
+            <button onClick={props.onClickFn}>🗑️</button>
+            
+            
+            
+
+          
         </div>
     )
 }
